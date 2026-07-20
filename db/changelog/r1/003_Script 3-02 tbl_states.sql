@@ -1,4 +1,3 @@
---Script 3-02 — tbl_states.sql (run as TMS_APP)
 -- ============================================================================
 -- Script:   3-02 tbl_states.sql
 -- Purpose:  US state / province reference (TDS section 6, Phase 1 12.3-C).
