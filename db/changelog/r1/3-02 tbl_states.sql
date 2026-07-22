@@ -1,0 +1,17 @@
+  
+create table states ( 
+  state_code    varchar2(3)                        not null, 
+  state_name    varchar2(100)                      not null, 
+  country_code  varchar2(2)   default 'US'         not null, 
+  created_at    timestamp with time zone default systimestamp not null, 
+  created_by    number(18) 
+                default coalesce(to_number(sys_context('app_ctx','user_id')), -1) 
+                                                   not null, 
+  constraint states_pk  primary key (state_code), 
+  constraint states_ck1 check (country_code in ('US','CA','MX')) 
+); 
+  
+comment on table  states               is 'US/CA/MX state reference. Seeded, read-only.'; 
+comment on column states.state_code   is 'Postal abbreviation. Natural PK (stable standard).'; 
+comment on column states.state_name   is 'Full state name.'; 
+comment on column states.country_code is 'ISO country: US, CA, MX.'; 
